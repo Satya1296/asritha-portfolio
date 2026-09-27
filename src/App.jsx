@@ -1292,19 +1292,6 @@ function App() {
               ></div>
 
 
-              <div
-                className="floating-label label-one"
-              >
-                FULL STACK
-              </div>
-
-
-              <div
-                className="floating-label label-two"
-              >
-                AI × CODE
-              </div>
-
             </div>
 
 
@@ -1631,64 +1618,6 @@ function App() {
                 solve real-world problems.
 
               </p>
-
-            </div>
-
-          </div>
-
-
-          {/* STATS */}
-
-          <div className="stats">
-
-            <div className="stat reveal">
-
-              <strong>
-                900+
-              </strong>
-
-              <span>
-                LeetCode Problems
-              </span>
-
-            </div>
-
-
-            <div className="stat reveal">
-
-              <strong>
-                350+
-              </strong>
-
-              <span>
-                CodeChef Problems
-              </span>
-
-            </div>
-
-
-            <div className="stat reveal">
-
-              <strong>
-                9.23
-              </strong>
-
-              <span>
-                GPA / 10
-              </span>
-
-            </div>
-
-
-            <div className="stat reveal">
-
-              <strong>
-                3
-              </strong>
-
-              <span>
-                Major Projects
-              </span>
 
             </div>
 
