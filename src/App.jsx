@@ -3,6 +3,12 @@ import "./App.css";
 
 function App() {
 
+  /* ================= GITHUB PAGES ASSET PATH ================= */
+
+  const asset = (fileName) =>
+    `${import.meta.env.BASE_URL}${fileName}`;
+
+
   /* ================= WELCOME INTRO ================= */
 
   const [showWelcome, setShowWelcome] = useState(true);
@@ -19,7 +25,6 @@ function App() {
   /* ================= PHOTO 3D TILT ================= */
 
   const handlePhotoMove = (e) => {
-
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
 
@@ -29,11 +34,8 @@ function App() {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX =
-      ((y - centerY) / centerY) * -5;
-
-    const rotateY =
-      ((x - centerX) / centerX) * 5;
+    const rotateX = ((y - centerY) / centerY) * -5;
+    const rotateY = ((x - centerX) / centerX) * 5;
 
     card.style.transform = `
       perspective(1000px)
@@ -45,7 +47,6 @@ function App() {
 
 
   const handlePhotoLeave = (e) => {
-
     e.currentTarget.style.transform = `
       perspective(1000px)
       rotateX(0deg)
@@ -120,6 +121,7 @@ function App() {
       cancelAnimationFrame(
         animationFrame
       );
+
     };
 
   }, []);
@@ -156,9 +158,11 @@ function App() {
               observer.unobserve(
                 entry.target
               );
+
             }
 
           });
+
         },
         {
           threshold: 0.08,
@@ -279,45 +283,65 @@ function App() {
 
 
   const projects = [
-  {
-    number: "01",
-    type: "AI • FULL STACK",
-    title: "PrepPilot AI",
-    description:
-      "AI-powered interview preparation platform with live camera and microphone based mock interviews, AI interviewer, proctoring controls and automated interview reports.",
-    stack:
-      "React.js • Express.js • Node.js • MongoDB • Gemini AI • Gmail API",
-    github: "https://github.com/Satya1296/Prepilot",
-    image: "/preppilot-photo-only.png",
-    imageAlt: "PrepPilot AI project cover",
-  },
 
-  {
-    number: "02",
-    type: "AI • CAREER • EDUCATION",
-    title: "CareerVerse AI",
-    description:
-      "AI-powered career and scholarship platform providing personalized roadmaps, skill profiling, scholarship matching and location-based institution discovery.",
-    stack:
-      "React.js • FastAPI • Python • MongoDB • Groq AI",
-    github: "https://github.com/Satya1296/CareerVerse-AI",
-    image: "/careerverse-photo-only.png",
-    imageAlt: "CareerVerse AI project cover",
-  },
+    {
+      number: "01",
+      type: "AI • FULL STACK",
+      title: "PrepPilot AI",
 
-  {
-    number: "03",
-    type: "FULL STACK • E-COMMERCE",
-    title: "MERN E-Commerce",
-    description:
-      "Full-stack e-commerce application covering product discovery, cart management, checkout and order placement with REST APIs.",
-    stack:
-      "MongoDB • Express.js • React.js • Node.js • JavaScript",
-    github: "https://github.com/Satya1296/E-commerce-Mern",
-    image: "/ecommerce-photo-only.png",
-    imageAlt: "MERN E-Commerce project cover",
-  },
-];
+      description:
+        "AI-powered interview preparation platform with live camera and microphone based mock interviews, AI interviewer, proctoring controls and automated interview reports.",
+
+      stack:
+        "React.js • Express.js • Node.js • MongoDB • Gemini AI • Gmail API",
+
+      github:
+        "https://github.com/Satya1296/Prepilot",
+
+      image:
+        asset("preppilot-photo-only.png"),
+
+    },
+
+    {
+      number: "02",
+      type: "AI • CAREER • EDUCATION",
+      title: "CareerVerse AI",
+
+      description:
+        "AI-powered career and scholarship platform providing personalized roadmaps, skill profiling, scholarship matching and location-based institution discovery.",
+
+      stack:
+        "React.js • FastAPI • Python • MongoDB • Groq AI",
+
+      github:
+        "https://github.com/Satya1296/CareerVerse-AI",
+
+      image:
+        asset("careerverse-photo-only.png"),
+
+    },
+
+    {
+      number: "03",
+      type: "FULL STACK • E-COMMERCE",
+      title: "MERN E-Commerce",
+
+      description:
+        "Full-stack e-commerce application covering product discovery, cart management, checkout and order placement with REST APIs.",
+
+      stack:
+        "MongoDB • Express.js • React.js • Node.js • JavaScript",
+
+      github:
+        "https://github.com/Satya1296/E-commerce-Mern",
+
+      image:
+        asset("ecommerce-photo-only.png"),
+
+    },
+
+  ];
 
 
   return (
@@ -355,11 +379,9 @@ function App() {
       <div className="custom-cursor"></div>
 
 
-      {/* ================= EFFECTS ================= */}
+      {/* ================= EXTRA EFFECTS ================= */}
 
       <style>{`
-
-        /* ================= CURSOR ================= */
 
         .custom-cursor {
 
@@ -373,7 +395,12 @@ function App() {
 
           border:
             1.5px solid
-            rgba(255,255,255,0.70);
+            rgba(
+              255,
+              255,
+              255,
+              0.70
+            );
 
           border-radius: 50%;
 
@@ -387,8 +414,12 @@ function App() {
 
           box-sizing: border-box;
 
-          mix-blend-mode: difference;
+          transition:
+            width 0.25s ease,
+            height 0.25s ease,
+            border-color 0.25s ease;
 
+          mix-blend-mode: difference;
         }
 
 
@@ -433,7 +464,6 @@ function App() {
             ease
             1.25s
             forwards;
-
         }
 
 
@@ -451,22 +481,30 @@ function App() {
               1
             )
             forwards;
-
         }
 
 
         .welcome-small {
 
-          margin: 0 0 14px;
+          margin:
+            0 0 14px;
 
           font-size: 11px;
 
-          letter-spacing: 0.32em;
+          letter-spacing:
+            0.32em;
 
           color: #858585;
 
-          text-transform: uppercase;
+          text-transform:
+            uppercase;
 
+          animation:
+            welcomeFade
+            0.8s
+            ease
+            0.1s
+            both;
         }
 
 
@@ -487,18 +525,31 @@ function App() {
 
           line-height: 0.9;
 
-          letter-spacing: -0.06em;
+          letter-spacing:
+            -0.06em;
 
           font-weight: 600;
 
           color: #f4f4f0;
 
+          animation:
+            welcomeTitle
+            1s
+            cubic-bezier(
+              0.22,
+              1,
+              0.36,
+              1
+            )
+            0.15s
+            both;
         }
 
 
         .welcome-title span {
 
-          color: #b8ff35;
+          color:
+            #b8ff35;
 
         }
 
@@ -509,9 +560,11 @@ function App() {
 
           height: 1px;
 
-          margin: 25px auto 0;
+          margin:
+            25px auto 0;
 
-          background: #b8ff35;
+          background:
+            #b8ff35;
 
           animation:
             welcomeLine
@@ -519,6 +572,57 @@ function App() {
             ease
             0.45s
             forwards;
+        }
+
+
+        @keyframes welcomeFade {
+
+          from {
+
+            opacity: 0;
+
+            transform:
+              translateY(12px);
+
+          }
+
+          to {
+
+            opacity: 1;
+
+            transform:
+              translateY(0);
+
+          }
+
+        }
+
+
+        @keyframes welcomeTitle {
+
+          from {
+
+            opacity: 0;
+
+            transform:
+              translateY(35px);
+
+            letter-spacing:
+              -0.01em;
+
+          }
+
+          to {
+
+            opacity: 1;
+
+            transform:
+              translateY(0);
+
+            letter-spacing:
+              -0.06em;
+
+          }
 
         }
 
@@ -530,11 +634,13 @@ function App() {
           }
 
           to {
+
             width:
               min(
                 180px,
                 35vw
               );
+
           }
 
         }
@@ -595,7 +701,7 @@ function App() {
         }
 
 
-        /* ================= PHOTO ================= */
+        /* ================= PHOTO EFFECT ================= */
 
         .photo-card {
 
@@ -612,7 +718,6 @@ function App() {
 
           will-change:
             transform;
-
         }
 
 
@@ -633,12 +738,14 @@ function App() {
 
           display: flex;
 
-          align-items: center;
+          align-items:
+            center;
 
-          justify-content: center;
+          justify-content:
+            center;
 
-          isolation: isolate;
-
+          isolation:
+            isolate;
         }
 
 
@@ -655,7 +762,8 @@ function App() {
 
           overflow: hidden;
 
-          background: #72c914;
+          background:
+            #72c914;
 
           border:
             2px solid
@@ -683,7 +791,6 @@ function App() {
               20,
               0.08
             );
-
         }
 
 
@@ -700,8 +807,8 @@ function App() {
           object-position:
             center top;
 
-          border-radius: 50%;
-
+          border-radius:
+            50%;
         }
 
 
@@ -721,7 +828,8 @@ function App() {
               -50%
             );
 
-          border-radius: 50%;
+          border-radius:
+            50%;
 
           border:
             1px solid
@@ -734,8 +842,8 @@ function App() {
 
           z-index: 2;
 
-          pointer-events: none;
-
+          pointer-events:
+            none;
         }
 
 
@@ -755,7 +863,8 @@ function App() {
               -50%
             );
 
-          border-radius: 50%;
+          border-radius:
+            50%;
 
           border:
             1px solid
@@ -768,8 +877,8 @@ function App() {
 
           z-index: 1;
 
-          pointer-events: none;
-
+          pointer-events:
+            none;
         }
 
 
@@ -789,7 +898,8 @@ function App() {
               -50%
             );
 
-          border-radius: 50%;
+          border-radius:
+            50%;
 
           border:
             1px solid
@@ -802,12 +912,39 @@ function App() {
 
           z-index: 0;
 
-          pointer-events: none;
+          pointer-events:
+            none;
+        }
+
+
+        .floating-label {
+
+          position: absolute;
+
+          z-index: 10;
+
+          white-space:
+            nowrap;
+        }
+
+
+        .label-one {
+
+          left: 0;
+          top: 90px;
 
         }
 
 
-        /* ================= MOBILE ================= */
+        .label-two {
+
+          right: 0;
+          bottom: 100px;
+
+        }
+
+
+        /* ================= RESPONSIVE ================= */
 
         @media (max-width: 1100px) {
 
@@ -909,6 +1046,17 @@ function App() {
 
           }
 
+          .welcome-title {
+
+            font-size:
+              clamp(
+                52px,
+                16vw,
+                90px
+              );
+
+          }
+
         }
 
 
@@ -946,6 +1094,20 @@ function App() {
 
             width: 370px;
             height: 370px;
+
+          }
+
+          .label-one {
+
+            left: -10px;
+            top: 40px;
+
+          }
+
+          .label-two {
+
+            right: -10px;
+            bottom: 45px;
 
           }
 
@@ -997,7 +1159,6 @@ function App() {
             href="#contact"
             className="nav-button"
           >
-
             Let's Talk
 
             <span>
@@ -1105,12 +1266,16 @@ function App() {
 
               <div
                 className="photo-card"
-                onMouseMove={handlePhotoMove}
-                onMouseLeave={handlePhotoLeave}
+                onMouseMove={
+                  handlePhotoMove
+                }
+                onMouseLeave={
+                  handlePhotoLeave
+                }
               >
 
                 <img
-                  src="/asritha.jpg"
+                  src={asset("asritha.jpg")}
                   alt="Asritha Satya"
                 />
 
@@ -1126,13 +1291,29 @@ function App() {
                 className="photo-ring ring-two"
               ></div>
 
+
+              <div
+                className="floating-label label-one"
+              >
+                FULL STACK
+              </div>
+
+
+              <div
+                className="floating-label label-two"
+              >
+                AI × CODE
+              </div>
+
             </div>
 
 
             {/* RESUME */}
 
             <a
-              href="/Patnala_Asritha_Satya_resume.pdf"
+              href={asset(
+                "Patnala_Asritha_Satya_resume.pdf"
+              )}
               target="_blank"
               rel="noopener noreferrer"
               className="photo-resume-button"
@@ -1176,43 +1357,57 @@ function App() {
             FULL STACK DEVELOPMENT
           </span>
 
-          <b>✦</b>
+          <b>
+            ✦
+          </b>
 
           <span>
             GENERATIVE AI
           </span>
 
-          <b>✦</b>
+          <b>
+            ✦
+          </b>
 
           <span>
             PROBLEM SOLVING
           </span>
 
-          <b>✦</b>
+          <b>
+            ✦
+          </b>
 
           <span>
             REACT.JS
           </span>
 
-          <b>✦</b>
+          <b>
+            ✦
+          </b>
 
           <span>
             BACKEND DEVELOPMENT
           </span>
 
-          <b>✦</b>
+          <b>
+            ✦
+          </b>
 
           <span>
             FULL STACK DEVELOPMENT
           </span>
 
-          <b>✦</b>
+          <b>
+            ✦
+          </b>
 
           <span>
             GENERATIVE AI
           </span>
 
-          <b>✦</b>
+          <b>
+            ✦
+          </b>
 
         </div>
 
@@ -1297,9 +1492,10 @@ function App() {
                     10+ REST APIs
                   </strong>{" "}
 
-                  using FastAPI, cutting manual
-                  configuration effort and enabling
-                  reliable AI-driven functionality.
+                  using FastAPI, cutting
+                  manual configuration effort
+                  and enabling reliable
+                  AI-driven functionality.
 
                 </p>
 
@@ -1320,10 +1516,11 @@ function App() {
                     5+ React.js modules
                   </strong>{" "}
 
-                  with MongoDB integration and
-                  JWT authentication, strengthening
-                  data security and reducing
-                  unauthorized access risk.
+                  with MongoDB integration
+                  and JWT authentication,
+                  strengthening data security
+                  and reducing unauthorized
+                  access risk.
 
                 </p>
 
@@ -1383,7 +1580,6 @@ function App() {
 
           <div className="about-grid">
 
-
             <div className="about-title reveal">
 
               <h2>
@@ -1407,8 +1603,8 @@ function App() {
 
                 I'm a Computer Science
                 undergraduate passionate
-                about building intelligent and
-                practical digital experiences.
+                about building intelligent
+                and practical digital experiences.
 
               </p>
 
@@ -1417,9 +1613,10 @@ function App() {
 
                 My interests lie in Full-Stack
                 Development, Generative AI,
-                backend engineering and problem
-                solving. I enjoy taking an idea
-                and turning it into a working product.
+                backend engineering and
+                problem solving. I enjoy taking
+                an idea and turning it into a
+                working product.
 
               </p>
 
@@ -1428,12 +1625,70 @@ function App() {
 
                 Through internships, projects,
                 hackathons and competitive
-                programming, I continuously work
-                on improving both my technical
-                skills and ability to solve
-                real-world problems.
+                programming, I continuously
+                work on improving both my
+                technical skills and ability to
+                solve real-world problems.
 
               </p>
+
+            </div>
+
+          </div>
+
+
+          {/* STATS */}
+
+          <div className="stats">
+
+            <div className="stat reveal">
+
+              <strong>
+                900+
+              </strong>
+
+              <span>
+                LeetCode Problems
+              </span>
+
+            </div>
+
+
+            <div className="stat reveal">
+
+              <strong>
+                350+
+              </strong>
+
+              <span>
+                CodeChef Problems
+              </span>
+
+            </div>
+
+
+            <div className="stat reveal">
+
+              <strong>
+                9.23
+              </strong>
+
+              <span>
+                GPA / 10
+              </span>
+
+            </div>
+
+
+            <div className="stat reveal">
+
+              <strong>
+                3
+              </strong>
+
+              <span>
+                Major Projects
+              </span>
 
             </div>
 
@@ -1471,17 +1726,11 @@ function App() {
             </h2>
 
 
-            <p
-              className="
-                heading-description
-                reveal
-              "
-            >
+            <p className="heading-description reveal">
 
-              Combining development,
-              AI and problem-solving to
-              create practical technology
-              solutions.
+              Combining development, AI
+              and problem-solving to create
+              practical technology solutions.
 
             </p>
 
@@ -1608,7 +1857,7 @@ function App() {
           </div>
 
 
-          {/* WOMEN WHO MASTER */}
+          {/* ================= WOMEN WHO MASTER ================= */}
 
           <div
             className="
@@ -1670,7 +1919,7 @@ function App() {
           </div>
 
 
-          {/* GOOGLE HACKSPRINT */}
+          {/* ================= GOOGLE HACKSPRINT ================= */}
 
           <div
             className="
@@ -1846,70 +2095,107 @@ function App() {
 
 
           <div className="project-list">
-            {projects.map((project) => (
-  <article
-    className="project-card reveal"
-    key={project.number}
-  >
 
-    {/* PROJECT COVER IMAGE */}
-    <div className="project-image">
+            {projects.map(
+              (project) => (
 
-      <img
-        src={project.image}
-        alt={project.imageAlt}
-        className="project-photo"
-      />
-
-      <div className="project-image-overlay"></div>
-
-      <span className="project-index">
-        {project.number}
-      </span>
-
-      <div className="project-corner">
-        ↗
-      </div>
-
-    </div>
+                <article
+                  className="
+                    project-card
+                    reveal
+                  "
+                  key={project.number}
+                >
 
 
-    {/* PROJECT DETAILS */}
-    <div className="project-content">
+                  <div className="project-image">
 
-      <p className="project-type">
-        {project.type}
-      </p>
+                    {/* PROJECT PHOTO */}
 
-      <h3 className="project-title">
-        {project.title}
-      </h3>
+                    <img
+                      src={project.image}
+                      alt={`${project.title} project cover`}
+                      className="project-photo"
+                    />
 
-      <p className="project-description">
-        {project.description}
-      </p>
 
-      <p className="project-stack">
-        {project.stack}
-      </p>
+                    <span
+                      className="
+                        project-index
+                      "
+                    >
+                      {project.number}
+                    </span>
 
-      <a
-        href={project.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="project-link"
-      >
-        VIEW PROJECT
-        <span>↗</span>
-      </a>
 
-    </div>
+                    <div
+                      className="
+                        project-corner
+                      "
+                    >
+                      ↗
+                    </div>
 
-  </article>
-))}
-            
+                  </div>
 
-            
+
+                  <div className="project-content">
+
+                    <p
+                      className="
+                        project-type
+                      "
+                    >
+                      {project.type}
+                    </p>
+
+
+                    <h3>
+                      {project.title}
+                    </h3>
+
+
+                    <p
+                      className="
+                        project-description
+                      "
+                    >
+                      {project.description}
+                    </p>
+
+
+                    <p
+                      className="
+                        project-stack
+                      "
+                    >
+                      {project.stack}
+                    </p>
+
+
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="
+                        project-link
+                      "
+                    >
+
+                      VIEW PROJECT
+
+                      <span>
+                        ↗
+                      </span>
+
+                    </a>
+
+                  </div>
+
+                </article>
+
+              )
+            )}
 
           </div>
 
@@ -2007,6 +2293,7 @@ function App() {
 
           <div className="contact-intro">
 
+
             <div
               className="
                 contact-heading
@@ -2059,7 +2346,7 @@ function App() {
           <div className="contact-grid">
 
 
-            {/* LEFT */}
+            {/* ================= LEFT ================= */}
 
             <div className="contact-details">
 
@@ -2237,7 +2524,9 @@ function App() {
                   {/* LINKEDIN */}
 
                   <a
-                    href="https://www.linkedin.com/in/asrithasatya12/"
+                    href="
+                      https://www.linkedin.com/in/asrithasatya12/
+                    "
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -2254,7 +2543,9 @@ function App() {
                   {/* RESUME */}
 
                   <a
-                    href="/Patnala_Asritha_Satya_resume.pdf"
+                    href={asset(
+                      "Patnala_Asritha_Satya_resume.pdf"
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -2274,7 +2565,7 @@ function App() {
             </div>
 
 
-            {/* RIGHT CARD */}
+            {/* ================= RIGHT CARD ================= */}
 
             <div
               className="
@@ -2282,6 +2573,7 @@ function App() {
                 reveal
               "
             >
+
 
               <div
                 className="
@@ -2312,7 +2604,7 @@ function App() {
               <p
                 className="
                   contact-card-description
-                "
+              "
               >
 
                 I'm always open to discussing
@@ -2323,10 +2615,12 @@ function App() {
               </p>
 
 
-              {/* GMAIL COMPOSE */}
+              {/* ================= GMAIL BUTTON ================= */}
 
               <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=asrithasatya12@gmail.com"
+                href="
+                  https://mail.google.com/mail/?view=cm&fs=1&to=asrithasatya12@gmail.com
+                "
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
@@ -2370,7 +2664,10 @@ function App() {
             "
           >
 
-            ASRITHA<span>.</span>
+            ASRITHA
+            <span>
+              .
+            </span>
 
           </div>
 
@@ -2387,6 +2684,7 @@ function App() {
         </div>
 
       </footer>
+
 
     </div>
 
